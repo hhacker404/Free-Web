@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Classroom</title>
+<link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Google_Classroom_Logo.svg/768px-Google_Classroom_Logo.svg.png">
+<style>
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 300% 300%;
+    animation: GradientFlow 15s ease infinite;
+}
+
+@keyframes GradientFlow {
+    0% {background: linear-gradient(45deg, #ff99cc, #99ffcc, #f0f, #0ff);}
+    25% {background: linear-gradient(45deg, #99ffcc, #f0f, #0ff, #ff99cc);}
+    50% {background: linear-gradient(45deg, #f0f, #0ff, #ff99cc, #99ffcc);}
+    75% {background: linear-gradient(45deg, #0ff, #ff99cc, #99ffcc, #f0f);}
+    100% {background: linear-gradient(45deg, #ff99cc, #99ffcc, #f0f, #0ff);}
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6f7ff; 
+}
+#passwordForm {
+    background: linear-gradient(45deg, #8b0000, #663399);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+#passwordForm label, #passwordForm input, #passwordForm button, #passwordForm div {
+    margin: 10px;
+}
+#passwordInput {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+#submitPassword {
+    padding: 12px 24px;
+    background-color: #ff66b3; 
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+#submitPassword:hover {
+    background-color: #ff3399; 
+}
+#instructions {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+#gameEmbed {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: none;
+    z-index: 1;
+}
+@keyframes moveColors {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 5;
+            bottom: 125%; 
+            left: 50%;
+            margin-left: -100px; 
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+.tooltip.version-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 5;
+    bottom: -100%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip.version-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+</style>
+</head>
+<body>
+<div id="particles-js" class="background"></div>
+<embed id="gameEmbed" type="text/html" allowfullscreen="true" sandbox="allow-scripts"></embed>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://classroom.google.com; script-src 'self'">
+    <div id="passwordForm">
+        <div class="tooltip" style="font-size: 14px; color: #FFFFFF; text-align: center; margin-top: 50px;">
+            <strong>Information</strong>
+            <span class="tooltiptext">Click on background to add particles.</span>
+        </div>
+    <h2 style="color: #FFFFFF;">Enter Password</h2>
+    <label for="passwordInput" style="color: #FFFFFF;">Password:</label>
+    <input type="password" id="passwordInput">
+    <button id="submitPassword">Submit</button>
+    <button id="googleClassroomRedirect" style="padding: 12px 24px; background-color: #ffcc00; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; position: absolute; top: 20px; right: 20px; transition: background-color 0.3s ease; z-index: 4;">Google Classroom</button>
+    <button id="unblockButton" style="position: absolute; top: 20px; left: 20px; background-color: blue; color: #fff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; z-index: 4;" onclick="clearBrowserData()">Bypass Securly</button>
+    <div id="instructions" style="color: #FFFFFF;">Credits: Created by GPT and XG corporation</div>
+    <div class="tooltip version-tooltip" style="font-size: 14px; color: #FFFFFF; text-align: center; margin-bottom: 10px;">
+        <strong><br>Version 5.6</strong>
+        <span class="tooltiptext">Securly Free Web</span>
+</div>
+<embed id="gameEmbed" type="text/html" allowfullscreen="true"></embed>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+    "particles": {
+        "number": {
+            "value": 150,
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
+        },
+        "color": {
+            "value": "#0f2000"
+        },
+        "shape": {
+            "type": "circle",
+            "stroke": {
+                "width": 0,
+                "color": "#0f2000"
+            },
+            "polygon": {
+                "nb_sides": 5
+            },
+            "image": {
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "opacity": {
+            "value": 0.58,
+            "random": false,
+            "anim": {
+                "enable": false,
+                "speed": 10,
+                "opacity_min": 0.15,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 3.5,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 20,
+                "size_min": 0.4,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 44,
+            "color": "#0f2000",
+            "opacity": 0.55,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 2.5,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+            }
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "grab"
+            },
+            "onclick": {
+                "enable": true,
+                "mode": "push"
+            },
+            "resize": true
+        },
+        "modes": {
+            "grab": {
+                "distance": 140,
+                "line_linked": {
+                    "opacity": 0.9
+                }
+            },
+            "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+            },
+            "repulse": {
+                "distance": 200,
+                "duration": 0.4
+            },
+            "push": {
+                "particles_nb": 4
+            },
+            "remove": {
+                "particles_nb": 2
+            }
+        }
+    },
+    "retina_detect": true
+});
+
+function generateSessionId() {
+    var a = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var b = '';
+    for (var c = 0; c < 10; c++) {
+        b += a.charAt(Math.floor(Math.random() * a.length));
+    }
+    return b;
+}
+function clearBrowserData() {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    window.indexedDB.deleteDatabase('indexedDBName');
+    document.cookie.split(";").forEach(function(d) {
+        document.cookie = d.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+}
+function loadDynamicContent(url) {
+    var win = window.open();
+    win.document.body.style.margin = '0';
+    win.document.body.style.height = '100vh';
+    var embed = win.document.createElement('embed');
+    embed.style.width = '100%';
+    embed.style.height = '100%';
+    embed.src = url;
+    win.document.body.appendChild(embed);
+    var fav = win.document.createElement('link');
+    fav.setAttribute("rel", "icon");
+    fav.setAttribute("href", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Google_Classroom_Logo.svg/768px-Google_Classroom_Logo.svg.png");
+    win.document.querySelector("head").appendChild(fav);
+    win.document.title = 'Google Classroom';
+}
+document.getElementById('submitPassword').addEventListener('click', function() {
+    var enteredPassword = document.getElementById('passwordInput').value;
+    var gistUrl = 'https://gist.github.com/hhacker404/b535113b986c69500e3d609535bd37dc/raw/rayan%2520n.txt';
+    var allOriginsUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(gistUrl);
+    
+    fetch(allOriginsUrl)
+    .then(response => response.json())
+    .then(data => {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(data.contents, 'text/html');
+        var content = doc.documentElement.textContent || doc.documentElement.innerText;
+
+        if (enteredPassword === content.trim()) {
+            var gameEmbed = document.getElementById('gameEmbed');
+            var sessionId = generateSessionId();
+            var link = prompt("Enter the link you want to visit:");
+            if (link !== null && link !== "") {
+    if (!/^https?:\/\//i.test(link)) {
+        if (link.indexOf('.') === -1) {
+            // If the input doesn't contain a dot, assume it's not a domain and construct a Bing search URL with the input as the query
+            link = "https://www.bing.com/search?q=" + encodeURIComponent(link);
+        } else {
+            // If the input contains a dot, treat it as a URL and add the http:// prefix
+            link = "http://" + link;
+        }
+    }
+    loadDynamicContent(link);
+    clearBrowserData();
+} else {
+    alert('Invalid or no link. Try again!');
+}
+        } else {
+            alert('Incorrect password. Access denied! If this error persists, contact your dealer.');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching password:', error);
+        alert('Sorry. Either XG corporation blocked this file, or there is a 503 error. Please check your internet connection and try again. If this error persists, allow popups at the top right of the screen.');
+    });
+});
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'g') {
+        window.location.href = 'https://classroom.google.com/';
+    }
+});
+document.getElementById('gameEmbed').addEventListener('load', function() {
+    this.contentWindow.addEventListener('keydown', function(event) {
+        if (event.key === 'g') {
+            window.location.href = 'https://classroom.google.com/';
+        }
+    });
+});
+document.getElementById('unblockButton').addEventListener('click', function() {
+    clearBrowserData();
+    alert('Success! Securly bypassed.');
+});
+document.getElementById('googleClassroomRedirect').addEventListener('click', function() {
+    window.location.href = 'https://classroom.google.com/';
+});
+window.addEventListener('load', function() {
+    var adElements = document.querySelectorAll('.ads');
+    adElements.forEach(function(adElement) {
+        adElement.remove();
+    });
+});
+
+document.getElementById('passwordInput').addEventListener('keyup', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById('submitPassword').click();
+    }
+});
+</script>
+</body>
+</html>
